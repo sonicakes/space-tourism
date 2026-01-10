@@ -1,15 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
+  
+  --font-bellefair-regular: "Bellefair", serif;
+  --font-barlow-regular: "Barlow", sans-serif;
+  --font-barlow-condensed-regular: "Barlow Condensed", sans-serif;
+
+  --color-blue-900: #0B0D17;
+  --color-blue-300: #D0D6F9;
+
+  --text-title: 9rem;
+  --text-title-mob: 5rem;
+  --text-subtitle: 1.75rem;
+  }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply text-white bg-blue-900 font-barlow-regular text-base;
 
-  @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
     color-scheme: dark;
-  }
+  } */
+}
+
+.barlow-cond-reg {
+  @apply font-barlow-regular font-normal not-italic;
+}
+
+.barlow-reg {
+  @apply font-barlow-regular font-normal not-italic;
+}
+
+.bellefair-reg {
+@apply font-bellefair-regular font-normal not-italic;
+}
+
+.title {
+  @apply font-bellefair-regular uppercase text-title-mob md:text-title;
+}
+
+.subtitle {
+  @apply font-barlow-condensed-regular tracking-wider uppercase text-blue-300 text-subtitle;
+}
+.para {
+  @apply font-barlow-regular text-lg;
 }
