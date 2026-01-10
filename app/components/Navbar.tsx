@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import { FaLaptopCode, FaTimes, FaBars } from "react-icons/fa";
+import { FaStar, FaTimes, FaBars } from "react-icons/fa";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
           to="/"
           className="flex items-center gap-2 text-lg font-bold text-blue-300"
         >
-          <FaLaptopCode className="" />
+          <FaStar />
           <span>Space Logo</span>
         </NavLink>
 
@@ -46,7 +46,6 @@ const Navbar = () => {
             >
               Tech
             </NavLink>
-         
           </div>
         </div>
         <div className="flex items-center gap-4 md:hidden">
@@ -91,7 +90,6 @@ const Navbar = () => {
           >
             Tech
           </NavLink>
-        
         </div>
       )}
     </nav>

@@ -11,6 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import Navbar from "./components/Navbar";
 export const links: Route.LinksFunction = () => [
+  { rel: "icon", href: "/favicon-custom.png", type: "image/x-icon" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -33,10 +34,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-          <Navbar />
-        <main>
-        {children}
-        </main>
+        <Navbar />
+        <main>{children}</main>
         <ScrollRestoration />
         <Scripts />
       </body>
