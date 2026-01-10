@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  
+
   --font-bellefair-regular: "Bellefair", serif;
   --font-barlow-regular: "Barlow", sans-serif;
   --font-barlow-condensed-regular: "Barlow Condensed", sans-serif;
@@ -12,8 +12,8 @@
   --text-title: 9rem;
   --text-title-mob: 5rem;
   --text-subtitle: 1.75rem;
-  
-  }
+
+}
 
 html,
 body {
@@ -27,14 +27,19 @@ body {
 .subtitle {
   @apply font-barlow-condensed-regular tracking-[4px] uppercase text-blue-300 text-subtitle;
 }
+
 .para {
   @apply font-barlow-regular text-lg;
 }
 
-.label-md{
-@apply uppercase font-barlow-condensed-regular text-sm tracking-[2px];
+.label-md {
+  @apply uppercase font-barlow-condensed-regular text-sm tracking-[2px];
 }
 
-.preset-6{
-@apply uppercase font-bellefair-regular text-subtitle;
+.preset-6 {
+  @apply uppercase font-bellefair-regular text-subtitle;
+}
+
+.preset-8 {
+  @apply uppercase font-barlow-condensed-regular text-base tracking-[2px];
 }

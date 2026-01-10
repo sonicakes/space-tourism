@@ -6,6 +6,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import bgMobile from "./imgs/home/background-home-mobile.jpg";
+import bgDesktop from "./imgs/home/background-home-desktop.jpg";
+import bgTablet from "./imgs/home/background-home-tablet.jpg";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -34,8 +37,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Navbar />
-        <main>{children}</main>
+        <div className="relative z-50">
+          <picture className="absolute z-10 w-full h-screen">
+            <source media="(min-width: 1024px)" srcSet={bgDesktop} />
+            <source media="(min-width: 768px)" srcSet={bgTablet} />
+            <img
+              src={bgMobile}
+              alt="Background"
+              className="w-full h-full object-cover"
+            />
+          </picture>
+          <div className="relative z-50">
+            <Navbar />
+            <main>{children}</main>
+          </div>
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
