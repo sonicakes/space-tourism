@@ -6,11 +6,57 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
-import bgMobile from "./imgs/home/background-home-mobile.jpg";
-import bgDesktop from "./imgs/home/background-home-desktop.jpg";
-import bgTablet from "./imgs/home/background-home-tablet.jpg";
+
+
+// Add your other image imports here
+import bgHomeMobile from "./imgs/home/background-home-mobile.jpg";
+import bgHomeTablet from "./imgs/home/background-home-tablet.jpg";
+import bgHomeDesktop from "./imgs/home/background-home-desktop.jpg";
+
+import bgDestMobile from "./imgs/destination/background-destination-mobile.jpg";
+import bgDestTablet from "./imgs/destination/background-destination-tablet.jpg";
+import bgDestDesktop from "./imgs/destination/background-destination-desktop.jpg";
+
+import bgCrewMobile from "./imgs/crew/background-crew-mobile.jpg";
+import bgCrewTablet from "./imgs/crew/background-crew-tablet.jpg";
+import bgCrewDesktop from "./imgs/crew/background-crew-desktop.jpg";
+
+import bgTechnologyMobile from "./imgs/technology/background-technology-mobile.jpg";
+import bgTechnologyTablet from "./imgs/technology/background-technology-tablet.jpg";
+import bgTechnologyDesktop from "./imgs/technology/background-technology-desktop.jpg";
+
+interface ImageSet {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
+const BACKGROUNDS: { [key: string]: ImageSet } = {
+  "/": {
+    mobile: bgHomeMobile,
+    tablet: bgHomeTablet,
+    desktop: bgHomeDesktop,
+  },
+  "/destination": {
+    mobile: bgDestMobile,
+    tablet: bgDestTablet,
+    desktop: bgDestDesktop,
+  },
+   "/crew": {
+    mobile: bgCrewMobile,
+    tablet: bgCrewTablet,
+    desktop: bgCrewDesktop,
+  },
+  "/technology": {
+    mobile: bgTechnologyMobile,
+    tablet: bgTechnologyTablet,
+    desktop: bgTechnologyDesktop,
+  },
+  // Add more routes like /crew or /technology here
+};
 
 import type { Route } from "./+types/root";
+import { useLocation } from "react-router";
 import "./app.css";
 import Navbar from "./components/Navbar";
 export const links: Route.LinksFunction = () => [
@@ -28,6 +74,10 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  
+  // Determine which background set to use; default to home if route doesn't exist
+  const activeBg = BACKGROUNDS[location.pathname] || BACKGROUNDS["/"];
   return (
     <html lang="en">
       <head>
@@ -39,10 +89,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="relative z-50">
           <picture className="absolute z-10 w-full h-screen">
-            <source media="(min-width: 1024px)" srcSet={bgDesktop} />
-            <source media="(min-width: 768px)" srcSet={bgTablet} />
+            <source media="(min-width: 1024px)" srcSet={activeBg.desktop} />
+            <source media="(min-width: 768px)" srcSet={activeBg.tablet} />
             <img
-              src={bgMobile}
+              src={activeBg.mobile}
               alt="Background"
               className="w-full h-full object-cover"
             />

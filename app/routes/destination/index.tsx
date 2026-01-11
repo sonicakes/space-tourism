@@ -3,6 +3,13 @@ import type { Destination } from "../../types";
 import DestinationComp from "~/components/DestinationComp";
 import Breadcrumb from "~/components/Breadcrumb";
 
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Space Tourism - Destinations" },
+    { name: "description", content: "Space Tourism Website Challenge" },
+  ];
+}
+
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ destinations: Destination[] }> {
