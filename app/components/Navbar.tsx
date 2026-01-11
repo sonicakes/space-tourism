@@ -21,7 +21,7 @@ const Navbar = () => {
       </NavLink>
 
       {/* desktop */}
-      <div className="hidden md:flex justify-center md:pr-10 lg:pr-16 md:pl-28 lg:pl-40 items-center gap-6 lg:gap-12 bg-blue-900/15 md:bg-white/5 backdrop-blur-lg ">
+      <div className="hidden relative md:flex justify-center md:pr-10 lg:pr-16 md:pl-28 lg:pl-40 items-center gap-6 lg:gap-12 bg-blue-900/15 md:bg-white/5 backdrop-blur-lg ">
         <NavLink
           className={({ isActive }) => (isActive ? active : base)}
           to="/"
@@ -46,6 +46,10 @@ const Navbar = () => {
         >
           <span className="font-bold">03</span>Technology
         </NavLink>
+
+        {/* divider */}
+        <div className="absolute top-1/2 -left-35 xl:-left-75 -translate-y-1/2 hidden lg:block bg-white/25 h-0.5 w-1/4 xl:w-1/2"></div>
+
       </div>
       <div className="flex items-center gap-4 md:hidden">
         <button
