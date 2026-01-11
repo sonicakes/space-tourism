@@ -1,10 +1,18 @@
 import type { Destination } from "~/types";
 import Tabs from "./Tabs";
+interface TabbedContentProps {
+  dest: Destination;
+  setSelectedTab: (tabName: string) => void;
+  selectedTab: string,
+  tabs: Array<string>
+}
 
-const TabbedContent = ({ dest }: { dest: Destination }) => {
+const TabbedContent = 
+({ dest, setSelectedTab, selectedTab,  tabs}: TabbedContentProps) => {
   return (
     <>
-    <Tabs />
+    <Tabs tabs={tabs} handleClick={setSelectedTab} selectedTab={selectedTab}/>
+    <div >
       <h2 className="text-8xl font-bellefair-regular uppercase">{dest.name}</h2>
       <p className="para text-blue-300">{dest.description}</p>
       <div className="flex justify-between ">
@@ -17,6 +25,7 @@ const TabbedContent = ({ dest }: { dest: Destination }) => {
           <div className="label-md">Est. Travel Time</div>
           <div className="preset-6">{dest.travel}</div>
         </div>
+      </div>
       </div>
     </>
   );

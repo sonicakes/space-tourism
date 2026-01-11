@@ -22,12 +22,14 @@ const DestinationPage = ({ loaderData }: Route.ComponentProps) => {
   const { destinations } = loaderData as { destinations: Destination[] };
   console.log("dests:", destinations);
 
+   const tabNames = destinations.map((dest) => dest.name);
+  console.log(tabNames)
   return (
     <>
       <Breadcrumb ind={1} label="Pick your destination" />
       <div>
         {destinations.map((dest) => (
-          <DestinationComp key={dest.name} dest={dest} />
+          <DestinationComp key={dest.name} dest={dest} tabs={tabNames}/>
         ))}
       </div>
     </>
