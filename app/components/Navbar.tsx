@@ -12,7 +12,7 @@ const Navbar = () => {
   const active =
     "preset-8 mb-8 md:mb-0 flex gap-3 md:py-10 font-semibold border-r-4 border-white md:border-x-0 md:border-b-3";
   return (
-    <nav className="sticky top-0 z-50 flex justify-between py-4 md:py-0 px-6 md:px-0  ">
+    <nav className="sticky top-0 z-50 flex justify-between py-4 md:py-0 px-6 md:px-0">
       <NavLink
         to="/"
         className="md:ml-10 lg:ml-16 flex justify-center items-center"
