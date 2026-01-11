@@ -8,7 +8,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const base =
-    "preset-8 mb-8 md:mb-0 mb-8 md:py-10 flex gap-3 transition hover:text-blue-300 md:border-b-3 border-transparent";
+    "preset-8 mb-8 md:mb-0 mb-8 md:py-10 flex gap-3 transition hover:text-blue-300 md:hover:border-white/50 md:border-b-3 border-transparent";
   const active =
     "preset-8 mb-8 md:mb-0 flex gap-3 md:py-10 font-semibold border-r-4 border-white md:border-x-0 md:border-b-3";
   return (
