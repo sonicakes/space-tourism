@@ -12,12 +12,11 @@
   --text-title: 9rem;
   --text-title-mob: 5rem;
   --text-subtitle: 1.75rem;
-
 }
 
 html,
 body {
-  @apply text-white bg-blue-900 font-barlow-regular text-base;
+  @apply text-white bg-blue-900 font-barlow-regular text-base h-full;
 }
 
 .title {
@@ -25,11 +24,11 @@ body {
 }
 
 .subtitle {
-  @apply font-barlow-condensed-regular tracking-[4px] uppercase text-blue-300 text-subtitle;
+  @apply font-barlow-condensed-regular tracking-[4px] uppercase text-blue-300 text-base md:text-subtitle;
 }
 
 .para {
-  @apply font-barlow-regular text-lg;
+  @apply font-barlow-regular text-[15px] leading-[180%] md:text-base lg:text-lg;
 }
 
 .label-md {

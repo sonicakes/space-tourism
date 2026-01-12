@@ -1,8 +1,8 @@
 import { NavLink } from "react-router";
 import { useState } from "react";
-import logo from "../icons/shared/logo.svg";
-import bars from "../icons/shared/icon-hamburger.svg";
-import close from "../icons/shared/icon-close.svg";
+import logo from "../../../icons/shared/logo.svg";
+import bars from "../../../icons/shared/icon-hamburger.svg";
+import close from "../../../icons/shared/icon-close.svg";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,13 +12,17 @@ const Navbar = () => {
   const active =
     "preset-8 mb-8 md:mb-0 flex gap-3 md:py-10 font-semibold border-r-4 border-white md:border-x-0 md:border-b-3";
   return (
-    <nav className="sticky top-0 z-50 flex justify-between py-4 md:py-0 px-6 md:px-0">
+    <nav className="sticky top-0 z-50 flex justify-between items-center py-6 md:py-0 px-6 md:px-0">
       <NavLink
         to="/"
-        className="md:ml-10 lg:ml-16 flex justify-center items-center"
+        className="md:ml-10 lg:ml-16 flex justify-center items-center w-10 h-10 md:min-w-12 md:min-h-12"
       >
-        <img src={logo} className="hover:invert-30" />
+        <img src={logo} className="hover:invert-30 w-full h-full" />
       </NavLink>
+
+              {/* divider */}
+        <div className="hidden lg:block relative left-15 z-100 divider h-px w-1/2 bg-white/25"></div>
+
 
       {/* desktop */}
       <div className="hidden relative md:flex justify-center md:pr-10 lg:pr-16 md:pl-28 lg:pl-40 items-center gap-6 lg:gap-12 bg-blue-900/15 md:bg-white/5 backdrop-blur-lg ">
@@ -47,8 +51,6 @@ const Navbar = () => {
           <span className="font-bold">03</span>Technology
         </NavLink>
 
-        {/* divider */}
-        <div className="absolute top-1/2 -left-35 xl:-left-75 -translate-y-1/2 hidden lg:block bg-white/25 h-0.5 w-1/4 xl:w-1/2"></div>
 
       </div>
       <div className="flex items-center gap-4 md:hidden">

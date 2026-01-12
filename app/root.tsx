@@ -7,8 +7,6 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-
-// Add your other image imports here
 import bgHomeMobile from "./imgs/home/background-home-mobile.jpg";
 import bgHomeTablet from "./imgs/home/background-home-tablet.jpg";
 import bgHomeDesktop from "./imgs/home/background-home-desktop.jpg";
@@ -52,13 +50,12 @@ const BACKGROUNDS: { [key: string]: ImageSet } = {
     tablet: bgTechnologyTablet,
     desktop: bgTechnologyDesktop,
   },
-  // Add more routes like /crew or /technology here
 };
 
 import type { Route } from "./+types/root";
 import { useLocation } from "react-router";
 import "./app.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/shared/ui/Navbar";
 export const links: Route.LinksFunction = () => [
   { rel: "icon", href: "/favicon-custom.png", type: "image/x-icon" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -76,8 +73,8 @@ export const links: Route.LinksFunction = () => [
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   
-  // Determine which background set to use; default to home if route doesn't exist
   const activeBg = BACKGROUNDS[location.pathname] || BACKGROUNDS["/"];
+
   return (
     <html lang="en">
       <head>
@@ -88,7 +85,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <div className="relative z-50">
-          <picture className="absolute z-10 w-full h-screen">
+          <picture className="absolute z-10 w-full h-full">
             <source media="(min-width: 1024px)" srcSet={activeBg.desktop} />
             <source media="(min-width: 768px)" srcSet={activeBg.tablet} />
             <img
@@ -97,9 +94,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
               className="w-full h-full object-cover"
             />
           </picture>
-          <div className="relative z-50">
+          <div>
             <Navbar />
-            <main>{children}</main>
+            <main className="">{children}</main>
           </div>
         </div>
         <ScrollRestoration />

@@ -1,7 +1,9 @@
+import Cta from "./shared/ui/Cta";
+
 const Hero = () => {
   return (
-    <div className="grid lg:grid-cols-2 gap-2 ">
-         <div className="flex flex-col gap-2 items-center lg:items-start">
+    <div className="grid lg:grid-cols-2 gap-2">
+         <div className="flex flex-col gap-2 items-center lg:items-start md:max-w-lg lg:max-w-135">
       <div>
         <div className="subtitle text-center lg:text-left">So you want to travel to</div>
         <div className="title text-center lg:text-left">SPACE</div>
@@ -15,8 +17,8 @@ const Hero = () => {
         </div>
       </div>
     </div>
-    <div className="flex justify-center items-center">
-        <div className="bg-white h-30 w-30 rounded-full text-gray-900">explore cta</div>
+    <div className="flex justify-center items-center pt-16 lg:pt-0">
+      <Cta />
    </div>
     </div>
    

@@ -1,7 +1,7 @@
 import type Route from "./+types/index";
 import type { Destination } from "../../types";
 import DestinationComp from "~/components/destinations/DestinationComp";
-import Breadcrumb from "~/components/Breadcrumb";
+import Breadcrumb from "~/components/shared/ui/Breadcrumb";
 import { useState } from "react";
 import DestinationTabs from "~/components/destinations/DestinationTabs";
 
