@@ -22,9 +22,9 @@ body {
 .title {
   @apply font-bellefair-regular uppercase text-title-mob md:text-title;
 }
-
+/* preset 5 is subtitle */
 .subtitle {
-  @apply font-barlow-condensed-regular tracking-[4px] uppercase text-blue-300 text-base md:text-subtitle;
+  @apply font-barlow-condensed-regular tracking-[4px] uppercase text-blue-300 text-base md:text-xl lg:text-subtitle;
 }
 
 .para {

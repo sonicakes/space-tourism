@@ -1,3 +1,5 @@
+import Breadcrumb from "~/components/shared/ui/Breadcrumb";
+
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Space Tourism - Technology" },
@@ -6,7 +8,11 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const TechnologyLayout = () => {
-    return ( <>tech layout</> );
-}
- 
+  return (
+    <div>
+      <Breadcrumb label="Space launch 101" ind={3} />
+    </div>
+  );
+};
+
 export default TechnologyLayout;
