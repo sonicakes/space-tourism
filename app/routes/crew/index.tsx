@@ -6,7 +6,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const CrewLayout = () => {
-    return ( <>crew layout</> );
+    return ( <div>crew layout</div> );
 }
  
 export default CrewLayout;
