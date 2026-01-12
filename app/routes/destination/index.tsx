@@ -27,7 +27,7 @@ const DestinationPage = ({ loaderData }: Route.ComponentProps) => {
   return (
     <>
       <Breadcrumb ind={1} label="Pick your destination" />
-      <div className="py-32">
+      <div className="md:pb-32 lg:py-32">
         <DestinationTabs
           destinationNames={destNames}
           activeTab={activeTab}

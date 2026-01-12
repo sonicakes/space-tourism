@@ -40,5 +40,5 @@ body {
 }
 
 .preset-8 {
-  @apply uppercase font-barlow-condensed-regular text-base tracking-[2px];
+  @apply uppercase font-barlow-condensed-regular text-sm md:text-base tracking-[2px];
 }
