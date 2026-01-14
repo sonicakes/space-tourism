@@ -37,7 +37,7 @@ const DestinationPage = ({ loaderData }: Route.ComponentProps) => {
           <DestinationComp
             key={dest.name}
             dest={dest}
-            display={dest.name === activeTab}
+            activeTab={activeTab}
           />
         ))}
       </div>
