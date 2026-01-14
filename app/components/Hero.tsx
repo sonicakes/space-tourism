@@ -1,17 +1,22 @@
 import Cta from "./shared/ui/Cta";
-
+import { motion } from "framer-motion";
 const Hero = ({
   title,
   subtitle,
   content,
 }: {
-  title: string;
-  subtitle: string;
-  content: string;
+  title?: string;
+  subtitle?: string;
+  content?: string;
 }) => {
   return (
     <div className="grid lg:grid-cols-2 gap-2">
-      <div className="flex flex-col gap-2 items-center lg:items-start md:max-w-lg lg:max-w-135">
+      
+      <motion.div 
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      className="flex flex-col gap-2 items-center lg:items-start md:max-w-lg lg:max-w-135">
         <div>
           <div className="subtitle text-center lg:text-left">{subtitle}</div>
           <div className="title text-center lg:text-left">{title}</div>
@@ -21,11 +26,20 @@ const Hero = ({
             {content}
           </div>
         </div>
-      </div>
-      <div className="flex justify-center items-center pt-16 lg:pt-0">
+      </motion.div>
+      <motion.div 
+       initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ 
+          type: "spring", 
+          stiffness: 100, 
+          delay: 0.5 // Starts after the text
+        }}
+      className="flex justify-center items-center pt-16 lg:pt-0">
         <Cta />
-      </div>
+      </motion.div>
     </div>
+
   );
 };
 

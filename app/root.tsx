@@ -23,6 +23,8 @@ import bgTechnologyMobile from "./imgs/technology/background-technology-mobile.j
 import bgTechnologyTablet from "./imgs/technology/background-technology-tablet.jpg";
 import bgTechnologyDesktop from "./imgs/technology/background-technology-desktop.jpg";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 interface ImageSet {
   mobile: string;
   tablet: string;
@@ -40,7 +42,7 @@ const BACKGROUNDS: { [key: string]: ImageSet } = {
     tablet: bgDestTablet,
     desktop: bgDestDesktop,
   },
-   "/crew": {
+  "/crew": {
     mobile: bgCrewMobile,
     tablet: bgCrewTablet,
     desktop: bgCrewDesktop,
@@ -56,6 +58,7 @@ import type { Route } from "./+types/root";
 import { useLocation } from "react-router";
 import "./app.css";
 import Navbar from "./components/shared/ui/Navbar";
+
 export const links: Route.LinksFunction = () => [
   { rel: "icon", href: "/favicon-custom.png", type: "image/x-icon" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -72,7 +75,7 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  
+
   const activeBg = BACKGROUNDS[location.pathname] || BACKGROUNDS["/"];
 
   return (
@@ -94,9 +97,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
               className="w-full h-full object-cover"
             />
           </picture>
-          <div>
+          <div className="">
             <Navbar />
-            <main className="">{children}</main>
+  {/* <AnimatePresence mode="wait">
+<motion.main
+  key={location.pathname}
+      initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3, ease: "easeInOut" 
+  }}
+  className="min-h-screen"
+>
+  {children}
+</motion.main>
+</AnimatePresence> */}
+<main>
+  {children}
+</main>
           </div>
         </div>
         <ScrollRestoration />

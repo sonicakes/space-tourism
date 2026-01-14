@@ -3,14 +3,17 @@ import { useState } from "react";
 import logo from "../../../icons/shared/logo.svg";
 import bars from "../../../icons/shared/icon-hamburger.svg";
 import close from "../../../icons/shared/icon-close.svg";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navLinks = ["Home", "Destination", "Crew", "Technology"];
+  //todo - refactor Nav link in separate comp to avoid repetition
 
   const base =
-    "preset-8 mb-8 md:mb-0 mb-8 md:py-10 flex gap-3 transition hover:text-blue-300 md:hover:border-white/50 md:border-b-3 border-transparent";
+    "preset-8 relative mb-8 md:mb-0 mb-8 md:py-10 flex gap-3 transition hover:text-blue-300 md:hover:border-white/50 md:border-b-3 border-transparent";
   const active =
-    "preset-8 mb-8 md:mb-0 flex gap-3 md:py-10 font-semibold border-r-4 border-white md:border-x-0 md:border-b-3";
+    "preset-8 relative mb-8 md:mb-0 flex gap-3 md:py-10 font-semibold border-r-4 border-white md:border-x-0 md:border-b-3";
   return (
     <nav className="sticky top-0 z-50 flex justify-between items-center py-6 md:py-0 px-6 md:px-0">
       <NavLink
@@ -20,39 +23,93 @@ const Navbar = () => {
         <img src={logo} className="hover:invert-30 w-full h-full" />
       </NavLink>
 
-              {/* divider */}
-        <div className="hidden lg:block relative left-15 z-100 divider h-px w-1/2 bg-white/25"></div>
-
+      {/* divider */}
+      <div className="hidden lg:block relative left-15 z-100 divider h-px w-1/2 bg-white/25"></div>
 
       {/* desktop */}
       <div className="hidden relative md:flex justify-center md:pr-10 lg:pr-16 md:pl-28 lg:pl-40 items-center gap-6 lg:gap-12 bg-blue-900/15 md:bg-white/5 backdrop-blur-lg ">
         <NavLink
-          className={({ isActive }) => (isActive ? active : base)}
+          className={({ isActive }) =>
+            `relative flex gap-3 preset-8 mb-8  md:mb-0  md:py-10 transition-colors ${isActive ? "text-white border-r-4 border-white md:border-x-0" : "text-blue-300 hover:text-white/50"}`
+          }
           to="/"
         >
-          <span className="font-bold">00</span> Home
+          {({ isActive }) => (
+            <>
+              <span className="font-bold mr-2">00</span> Home
+              {/* The Magic Sliding Underline */}
+              {isActive && (
+                <motion.div
+                  layoutId="nav-underline"
+                  className="absolute bottom-0 left-0 right-0 h-[3px] bg-white"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </>
+          )}
         </NavLink>
         <NavLink
-          className={({ isActive }) => (isActive ? active : base)}
+          className={({ isActive }) =>
+            `relative flex gap-3 preset-8 mb-8  md:mb-0  md:py-10 transition-colors ${isActive ? "text-white border-r-4 border-white md:border-x-0" : "text-blue-300 hover:text-white/50"}`
+          }
           to="/destination"
         >
-          <span className="font-bold">01</span>Destination
+          {({ isActive }) => (
+            <>
+              <span className="font-bold mr-2">01</span> Destination
+              {/* The Magic Sliding Underline */}
+              {isActive && (
+                <motion.div
+                  layoutId="nav-underline"
+                  className="absolute bottom-0 left-0 right-0 h-[3px] bg-white"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </>
+          )}
         </NavLink>
         <NavLink
-          className={({ isActive }) => (isActive ? active : base)}
+          className={({ isActive }) =>
+            `relative flex gap-3 preset-8 mb-8  md:mb-0  md:py-10 transition-colors ${isActive ? "text-white border-r-4 border-white md:border-x-0" : "text-blue-300 hover:text-white/50"}`
+          }
           to="/crew"
         >
-          <span className="font-bold">02</span>Crew
+          {({ isActive }) => (
+            <>
+              <span className="font-bold mr-2">02</span> Crew
+              {/* The Magic Sliding Underline */}
+              {isActive && (
+                <motion.div
+                  layoutId="nav-underline"
+                  className="absolute bottom-0 left-0 right-0 h-[3px] bg-white"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </>
+          )}
         </NavLink>
         <NavLink
-          className={({ isActive }) => (isActive ? active : base)}
+          className={({ isActive }) =>
+            `relative flex gap-3 preset-8 mb-8  md:mb-0  md:py-10 transition-colors ${isActive ? "text-white border-r-4 border-white md:border-x-0" : "text-blue-300 hover:text-white/50"}`
+          }
           to="/technology"
         >
-          <span className="font-bold">03</span>Technology
+          {({ isActive }) => (
+            <>
+              <span className="font-bold mr-2">03</span> Technology
+              {/* The Magic Sliding Underline */}
+              {isActive && (
+                <motion.div
+                  layoutId="nav-underline"
+                  className="absolute bottom-0 left-0 right-0 h-[3px] bg-white"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </>
+          )}
         </NavLink>
-
-
       </div>
+
       <div className="flex items-center gap-4 md:hidden">
         <button
           title="Mobile menu"

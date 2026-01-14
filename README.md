@@ -27,6 +27,7 @@ Users should be able to:
 
 Im using this project to practice React Router v7 section that I'm going through on Udemy. I am using React Router v7 in Framework mode. Also I created API where I've put my data for the pages (excluding Home which does not have much and is not provided in the OG data.json). The link to API is [here](https://github.com/sonicakes/space-api) - its made with express & node, simple GET requests to respective pages e.g. /api/destinations, /api/crew etc.
 
+Another thing I'm practising is [React Framer Motion](https://framermotionexamples.com/). Using this to animate tab transitions, menu nav transitions and loading of comps via Animate Presence. 
 ### Screenshot
 
 ![](./screenshot.jpg)
@@ -56,6 +57,7 @@ Note about the design VS dev version for this project: this is the 1st of FE Men
 - [React Router v7 in Framework Mode](https://reactrouter.com/) - React Router docs
 - [Tailwind v4](https://tailwindcss.com/) - For styles
 - [Vite](https://vite.dev/) - FE Build Tool
+- [Framer Motion](https://framermotionexamples.com/) - for animations
 
 ### What I learned
 
@@ -145,11 +147,15 @@ export const links: Route.LinksFunction = () => [
 ```
 It's also the spot where I replaced default font with required ones.
 
-### Continued development
+### Continued development & current roadblocks/challenges
 
 1. The 'divider' line in desktop design (Figma file) on the Nav menu is vertically aligned with the content that is within container restraints (So, you want to go to space). The Menu itself is not within container (it spans wider than container content on desktop sizes).
 
 I've tried absolute positioning relative to the links blurry righ-hand side, but then realized its actually in line with content on Homepage & with Breadcrumb on Destination (main layout) pages. So the refined solution is putting it inside the Nav row & offsetting slightly, replicating what design does towards the Right-hand side. However, this still does not match the OG design and will need more playing with to get to what design wants to achieve. Current solution does not look terrible but will be interesting to find out how to achieve the design requirement (or if possible at all?)
+
+2. Framer Motion nasties
+Initially wanted to implement the router-based animation,wrapping <main> in <motion.main> and using path.location from useLocation hook as key. Somehow it messes up my bg image & height screen, adding a scroll as well (since it requires/suggests h-screen class - but i dont need  it since i calc my height maunally to avoid that kind of scroll). Soo after a bit of kefuffle I've settled on motion divs for each comp as a there are not that many and Destination tabs content already slides gracefuly into view.
+
 
 ### Useful resources
 
