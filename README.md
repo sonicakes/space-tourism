@@ -28,6 +28,7 @@ Users should be able to:
 Im using this project to practice React Router v7 section that I'm going through on Udemy. I am using React Router v7 in Framework mode. Also I created API where I've put my data for the pages (excluding Home which does not have much and is not provided in the OG data.json). The link to API is [here](https://github.com/sonicakes/space-api) - its made with express & node, simple GET requests to respective pages e.g. /api/destinations, /api/crew etc.
 
 Another thing I'm practising is [React Framer Motion](https://framermotionexamples.com/). Using this to animate tab transitions, menu nav transitions and loading of comps via Animate Presence. 
+
 ### Screenshot
 
 ![](./screenshot.jpg)
@@ -58,6 +59,11 @@ Note about the design VS dev version for this project: this is the 1st of FE Men
 - [Tailwind v4](https://tailwindcss.com/) - For styles
 - [Vite](https://vite.dev/) - FE Build Tool
 - [Framer Motion](https://framermotionexamples.com/) - for animations
+
+
+### Deviations from Design
+
+1. Added a very soft drop shadow for Explore btn since I felt on very dark bg plain white doesnt have much depth. It's barely perceptable yet slightly 3d.
 
 ### What I learned
 
@@ -155,6 +161,8 @@ I've tried absolute positioning relative to the links blurry righ-hand side, but
 
 2. Framer Motion nasties
 Initially wanted to implement the router-based animation,wrapping <main> in <motion.main> and using path.location from useLocation hook as key. Somehow it messes up my bg image & height screen, adding a scroll as well (since it requires/suggests h-screen class - but i dont need  it since i calc my height maunally to avoid that kind of scroll). Soo after a bit of kefuffle I've settled on motion divs for each comp as a there are not that many and Destination tabs content already slides gracefuly into view.
+
+3. Had an idea for future animation on load/stagger for CTA: since it has the 'aura/ring' effect on hover, it might be cool to do a circular motion (like a loader but only 1 ring cycle) on animate presence. IDK if thats achievable but that is how I envisage this appearing on the screen.
 
 
 ### Useful resources

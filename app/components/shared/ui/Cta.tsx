@@ -14,6 +14,7 @@ const Cta = ({ label = "Explore" }: { label?: string }) => {
         hover:text-blue-900/50
         hover:ring-30 hover:ring-gray-300/30
         hover:ring-offset-8 hover:ring-offset-transparent
+        shadow-[6px_0_12px_rgba(245,245,245,0.2)]
         "
     >
       {label}
