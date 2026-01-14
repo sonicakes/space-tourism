@@ -1,15 +1,17 @@
 import LayoutWrapper from "../LayoutWrapper";
 import ImgComp from "../ImgComp";
-import TabbedContent from "./TabbedContent";
-import type { Destination } from "~/types";
+import type { CrewMember } from "~/types";
 import { motion, AnimatePresence } from "framer-motion";
+import ContentBlock from "../shared/ContentBlock";
 
-const DestinationComp = ({
-  dest,
+const CrewComp = ({
+  member,
   activeTab,
+  index
 }: {
-  dest: Destination;
-  activeTab: string;
+  member: CrewMember;
+  activeTab: number;
+  index: number
 }) => {
   return (
     <>
@@ -21,10 +23,12 @@ const DestinationComp = ({
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          {dest.name === activeTab && (
+          {index === activeTab && (
             <LayoutWrapper
-              leftContent={<ImgComp element={dest} type='dest'/>}
-              rightContent={<TabbedContent dest={dest} />}
+              leftContent={<ContentBlock element={member} />}
+              rightContent={
+            <ImgComp element={member} />
+            }
             />
           )}
         </motion.div>
@@ -33,4 +37,4 @@ const DestinationComp = ({
   );
 };
 
-export default DestinationComp;
+export default CrewComp;

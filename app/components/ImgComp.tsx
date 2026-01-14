@@ -1,9 +1,22 @@
-import type { Destination } from "~/types";
+interface ImageSet {
+  png: string;
+  webp: string;
+}
 
-const ImgComp = ({ dest }: { dest: Destination }) => {
+interface BaseElement {
+  images: ImageSet;
+}
+
+const ImgComp = <T extends BaseElement>({ element, type }: { element: T, type?: string }) => {
+  const destinationClasses= "min-w-37.5 min-h-37.5 max-w-37.5 max-h-37.5 md:min-h-75 md:min-w-75 md:max-h-75 md:max-w-75 lg:min-w-100 lg:min-h-100 lg:max-w-100 lg:max-h-100 xl:min-w-120 xl:min-h-120 xl:max-w-120 xl:max-h-120"
+  const crewClasses = "max-h-[340px] min-h-[340px] w-full object-cover";
+  
+  if (!element || !element.images) {
+    return <div className="image-placeholder" />; 
+  }
   return (
-    <div className=" px-7 flex justify-center items-center xl:items-start xl:justify-start py-6 md:py-10 lg:py-0">
-      <img src={dest.images.png} className="min-w-37.5 min-h-37.5 max-w-37.5 max-h-37.5 md:min-h-75 md:min-w-75 md:max-h-75 md:max-w-75 lg:min-w-100 lg:min-h-100 lg:max-w-100 lg:max-h-100 xl:min-w-120 xl:min-h-120 xl:max-w-120 xl:max-h-120"/>
+    <div className="px-7 flex justify-center items-center xl:items-start xl:justify-start py-6 md:py-10 lg:py-0">
+      <img src={element.images.png} className={`${type==='dest' ? destinationClasses : crewClasses}`}/>
     </div>
   );
 };

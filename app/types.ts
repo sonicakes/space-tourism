@@ -9,3 +9,14 @@ export type Destination = {
     webp: string;
   };
 };
+
+export type CrewMember = {
+  id: number;
+  name: string;
+  bio: string;
+  role: string;
+  images: {
+    png: string;
+    webp: string;
+  };
+};
