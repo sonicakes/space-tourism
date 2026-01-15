@@ -61,9 +61,25 @@ Note about the design VS dev version for this project: this is the 1st of FE Men
 - [Framer Motion](https://framermotionexamples.com/) - for animations
 
 
-### Deviations from Design
+### Deviations from Design/Expansions/Additions
 
 1. Added a very soft drop shadow for Explore btn since I felt on very dark bg plain white doesnt have much depth. It's barely perceptable yet slightly 3d.
+2. Added a tiny scale up on the active dot in Crew tabs via framer motion, since it fits the effect of 'scale & glow' I was going for. 
+```js
+          <motion.div
+            animate={{
+              scale: activeTab === tab.index ? 1.2 : 1,
+              backgroundColor:
+                activeTab === tab.index
+                  ? "#ffffff"
+                  : "rgba(255, 255, 255, 0.17)",
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="w-3.75 h-3.75 rounded-full cursor-pointer"
+            onClick={() => onClickHandle(tab.index)}
+          />
+```
 
 ### What I learned
 
