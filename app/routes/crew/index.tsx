@@ -30,7 +30,7 @@ const CrewPage = ({ loaderData }: Route.ComponentProps) => {
   return (
     <>
       <Breadcrumb ind={2} label="Meet your crew" />
-      <div className="md:pb-32 lg:py-32">
+      <div className="md:pb-32 lg:py-12">
         {crewMembers.map((member, index) => (
           <CrewComp
             key={member.name}

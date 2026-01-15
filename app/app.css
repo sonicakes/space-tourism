@@ -27,8 +27,16 @@ body {
   @apply font-barlow-condensed-regular tracking-[4px] uppercase text-blue-300 text-base md:text-xl lg:text-subtitle;
 }
 
+.preset-3 {
+  @apply text-2xl md:text-[2.5rem] lg:text-[3.5rem] font-bellefair-regular uppercase;
+}
+
+.preset-4 {
+  @apply text-lg md:text-2xl lg:text-[2rem] font-bellefair-regular uppercase text-white/50;
+}
+
 .para {
-  @apply font-barlow-regular text-[15px] leading-[180%] md:text-base lg:text-lg;
+  @apply font-barlow-regular text-[15px] leading-[180%] md:text-base lg:text-lg text-blue-300 text-center lg:text-left;
 }
 
 .label-md {

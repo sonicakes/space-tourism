@@ -22,7 +22,7 @@ const Hero = ({
           <div className="title text-center lg:text-left">{title}</div>
         </div>
         <div>
-          <div className="para text-blue-300 text-center lg:text-left">
+          <div className="para">
             {content}
           </div>
         </div>

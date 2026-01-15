@@ -10,7 +10,7 @@ const CrewPagination = ({
   onClickHandle: (page: number) => void;
 }) => {
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 pt-2">
       {tabCircles.map((tab) => (
         <div
           key={tab.index}
