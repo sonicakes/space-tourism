@@ -10,8 +10,9 @@ export default [
   layout("./routes/layouts/main.tsx", [
     route("destination", "./routes/destination/index.tsx"),
     route("crew", "./routes/crew/index.tsx"),
-    route("technology", "./routes/technology/index.tsx"),
-    // route("projects/:id", "./routes/projects/details.tsx"),
-    // route("blog", "./routes/blog/index.tsx"),
   ]),
+   layout("./routes/layouts/technology.tsx", [
+    route("technology", "./routes/technology/index.tsx"),
+  ]),
+  
 ] satisfies RouteConfig;

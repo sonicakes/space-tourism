@@ -20,3 +20,13 @@ export type CrewMember = {
     webp: string;
   };
 };
+
+export type Term = {
+  id: number;
+  name: string;
+  description: string;
+  images: {
+    png: string;
+    webp: string;
+  };
+};

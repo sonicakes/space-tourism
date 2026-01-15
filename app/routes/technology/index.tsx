@@ -1,4 +1,9 @@
+import type Route from "./+types/index";
 import Breadcrumb from "~/components/shared/ui/Breadcrumb";
+import { useState } from "react";
+import TechPagination from "~/components/technology/TechPagination";
+import type { Term } from "~/types";
+import TechComp from "~/components/technology/TechComp";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -7,12 +12,46 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-const TechnologyLayout = () => {
+export async function loader({
+  request,
+}: Route.LoaderArgs): Promise<{ terms: Term[] }> {
+  const res = await fetch(`${import.meta.env.VITE_ROOT_API}technology`);
+  const data = await res.json();
+  console.log(data)
+  return { terms: data };
+}
+const TechnologyPage = ({ loaderData }: Route.ComponentProps) => {
+  const { terms } = loaderData as { terms: Term[] };
+  const [activeTab, setActiveTab] = useState(0);
+  const tabCircles = terms.map((term, index) => ({
+    index: index,
+    name: term.name,
+  }));
   return (
-    <div>
-      <Breadcrumb label="Space launch 101" ind={3} />
-    </div>
+    <>
+      <div className="max-w-6xl mx-auto pt-6 md:pt-10 lg:pt-12 px-6 md:px-10 lg:px-16 xl:px-0">
+              <Breadcrumb ind={3} label="Space launch 101" />
+
+         </div>
+      <div className="md:pb-32 lg:py-12">
+        <div className="pl-6 md:pl-10 lg:pl-16 xl:pl-40 flex items-center">
+          <TechPagination
+          tabCircles={tabCircles}
+          activeTab={activeTab}
+          onClickHandle={setActiveTab}
+        />
+        {terms.map((term, index) => (
+          <TechComp
+            key={term.name}
+            term={term}
+            activeTab={activeTab}
+            index={index}
+          />
+        ))}
+      </div>
+      </div>
+    </>
   );
 };
 
-export default TechnologyLayout;
+export default TechnologyPage;
