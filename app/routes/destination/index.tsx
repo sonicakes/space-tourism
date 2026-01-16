@@ -15,7 +15,7 @@ export function meta({}: Route.MetaArgs) {
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ destinations: Destination[] }> {
-  const res = await fetch(import.meta.env.VITE_ROOT_API_DEST);
+  const res = await fetch('https://space-api-n2m0.onrender.com/api/destinations');
   const data = await res.json();
 
   return { destinations: data };
