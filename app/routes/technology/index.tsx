@@ -15,7 +15,7 @@ export function meta({}: Route.MetaArgs) {
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ terms: Term[] }> {
-  const res = await fetch(`${import.meta.env.VITE_ROOT_API}technology`);
+  const res = await fetch(import.meta.env.VITE_ROOT_API_TECH);
   const data = await res.json();
   console.log(data);
   return { terms: data };

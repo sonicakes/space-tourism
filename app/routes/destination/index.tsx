@@ -15,7 +15,7 @@ export function meta({}: Route.MetaArgs) {
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ destinations: Destination[] }> {
-  const res = await fetch(`${import.meta.env.VITE_ROOT_API}destinations`);
+  const res = await fetch(import.meta.env.VITE_ROOT_API_DEST);
   const data = await res.json();
 
   return { destinations: data };

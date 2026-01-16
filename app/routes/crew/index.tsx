@@ -15,7 +15,7 @@ export function meta({}: Route.MetaArgs) {
 export async function loader({
   request,
 }: Route.LoaderArgs): Promise<{ crewMembers: CrewMember[] }> {
-  const res = await fetch(`${import.meta.env.VITE_ROOT_API}crew`);
+  const res = await fetch(import.meta.env.VITE_ROOT_API_CREW);
   const data = await res.json();
 
   return { crewMembers: data };
