@@ -1,5 +1,7 @@
 import Cta from "./shared/ui/Cta";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router";
+
 const Hero = ({
   title,
   subtitle,
@@ -33,10 +35,12 @@ const Hero = ({
         transition={{ 
           type: "spring", 
           stiffness: 100, 
-          delay: 0.5 // Starts after the text
+          delay: 0.5 
         }}
       className="flex justify-center items-center pt-16 lg:pt-0">
-        <Cta />
+        <NavLink to="/destination">
+          <Cta />
+        </NavLink>
       </motion.div>
     </div>
 

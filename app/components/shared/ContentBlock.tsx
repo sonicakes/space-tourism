@@ -15,7 +15,7 @@ const ContentBlock = ({ element, type }: { element: CrewMember | Term; type?: st
     : (element as CrewMember).bio;
 
   return (
-    <div className="py-10">
+    <div className={`${type==='tech' ? 'px-6 lg:px-0 relative top-28 md:top-35 lg:top-0' : ''} lg:py-10`}>
       <TypoElement
         title={title}
         subtitle={subtitle}

@@ -1,4 +1,4 @@
-const Cta = ({ label = "Explore" }: { label?: string }) => {
+const Cta = ({ label = "Explore", onClickHandle}: { label?: string, onClickHandle?: () => void; }) => {
   return (
     <div
       className="
@@ -16,6 +16,7 @@ const Cta = ({ label = "Explore" }: { label?: string }) => {
         hover:ring-offset-8 hover:ring-offset-transparent
         shadow-[6px_0_12px_rgba(245,245,245,0.2)]
         "
+        onClick={onClickHandle}
     >
       {label}
     </div>

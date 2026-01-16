@@ -10,12 +10,12 @@ const TechPagination = ({
   onClickHandle: (page: number) => void;
 }) => {
   return (
-    <div className="flex gap-8 flex-col lg:pr-16">
+    <div className="flex gap-4 lg:gap-8 lg:flex-col lg:pr-8 xl:pr-16 justify-center lg:justify-start relative top-82.5 md:top-[452px] lg:top-0">
       {tabCircles.map((tab) => (
         <motion.div
           key={tab.index}
           onClick={() => onClickHandle(tab.index)}
-          className="relative w-20 h-20 flex justify-center items-center cursor-pointer group preset-4 rounded-full"
+          className="relative w-10 h-10 md:w-14 md:h-14 lg:w-20 lg:h-20 flex justify-center items-center cursor-pointer group preset-4 rounded-full"
         >
           {activeTab === tab.index && (
             <motion.div

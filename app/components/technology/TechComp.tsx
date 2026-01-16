@@ -7,11 +7,11 @@ import TechImg from "./TechImg";
 const TechComp = ({
   term,
   activeTab,
-  index
+  index,
 }: {
   term: Term;
   activeTab: number;
-  index: number
+  index: number;
 }) => {
   return (
     <>
@@ -24,15 +24,13 @@ const TechComp = ({
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           {index === activeTab && (
-            <div className=" ">
-                 <LayoutWrapper
-              leftContent={<ContentBlock element={term} type="tech"/>}
-              rightContent={
-            <TechImg element={term} />
-            }
-            />
-            </div>
-         
+            <>
+              <LayoutWrapper
+                leftContent={<ContentBlock element={term} type="tech" />}
+                rightContent={<TechImg element={term} />}
+                type="tech"
+              />
+            </>
           )}
         </motion.div>
       </AnimatePresence>
