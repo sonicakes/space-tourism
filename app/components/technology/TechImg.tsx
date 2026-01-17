@@ -19,7 +19,7 @@ const TechImg = <T extends BaseElement>({ element }: { element: T }) => {
             <img
               src={element.images.landscape}
               alt="tech img"
-              className="w-full h-full object-cover min-h-65 max-h-65 md:max-h-89 md:min-h-89 lg:max-h-[600px] 2xl:min-w-150"
+              className="w-full h-full object-cover min-h-65 max-h-65 md:max-h-89 md:min-h-89 lg:max-h-150 2xl:min-w-150"
             />
           </picture>
     </div>

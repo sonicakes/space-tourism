@@ -1,8 +1,8 @@
 import { NavLink } from "react-router";
 import { useState } from "react";
-import logo from "../../../icons/shared/logo.svg";
-import bars from "../../../icons/shared/icon-hamburger.svg";
-import close from "../../../icons/shared/icon-close.svg";
+import logo from "../../../assets/icons/shared/logo.svg";
+import bars from "../../../assets/icons/shared/icon-hamburger.svg";
+import close from "../../../assets/icons/shared/icon-close.svg";
 import { motion } from "framer-motion";
 
 const Navbar = () => {

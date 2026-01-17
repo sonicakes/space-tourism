@@ -7,23 +7,21 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import bgHomeMobile from "./imgs/home/background-home-mobile.jpg";
-import bgHomeTablet from "./imgs/home/background-home-tablet.jpg";
-import bgHomeDesktop from "./imgs/home/background-home-desktop.jpg";
+import bgHomeMobile from "./assets/imgs/home/background-home-mobile.jpg";
+import bgHomeTablet from "./assets/imgs/home/background-home-tablet.jpg";
+import bgHomeDesktop from "./assets/imgs/home/background-home-desktop.jpg";
 
-import bgDestMobile from "./imgs/destination/background-destination-mobile.jpg";
-import bgDestTablet from "./imgs/destination/background-destination-tablet.jpg";
-import bgDestDesktop from "./imgs/destination/background-destination-desktop.jpg";
+import bgDestMobile from "./assets/imgs/destination/background-destination-mobile.jpg";
+import bgDestTablet from "./assets/imgs/destination/background-destination-tablet.jpg";
+import bgDestDesktop from "./assets/imgs/destination/background-destination-desktop.jpg";
 
-import bgCrewMobile from "./imgs/crew/background-crew-mobile.jpg";
-import bgCrewTablet from "./imgs/crew/background-crew-tablet.jpg";
-import bgCrewDesktop from "./imgs/crew/background-crew-desktop.jpg";
+import bgCrewMobile from "./assets/imgs/crew/background-crew-mobile.jpg";
+import bgCrewTablet from "./assets/imgs/crew/background-crew-tablet.jpg";
+import bgCrewDesktop from "./assets/imgs/crew/background-crew-desktop.jpg";
 
-import bgTechnologyMobile from "./imgs/technology/background-technology-mobile.jpg";
-import bgTechnologyTablet from "./imgs/technology/background-technology-tablet.jpg";
-import bgTechnologyDesktop from "./imgs/technology/background-technology-desktop.jpg";
-
-import { motion, AnimatePresence } from "framer-motion";
+import bgTechnologyMobile from "./assets/imgs/technology/background-technology-mobile.jpg";
+import bgTechnologyTablet from "./assets/imgs/technology/background-technology-tablet.jpg";
+import bgTechnologyDesktop from "./assets/imgs/technology/background-technology-desktop.jpg";
 
 interface ImageSet {
   mobile: string;

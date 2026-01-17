@@ -27,7 +27,7 @@ Users should be able to:
 
 Im using this project to practice React Router v7 section that I'm going through on Udemy. I am using React Router v7 in Framework mode. Also I created API where I've put my data for the pages (excluding Home which does not have much and is not provided in the OG data.json). The link to API is [here](https://github.com/sonicakes/space-api) - its made with express & node, simple GET requests to respective pages e.g. /api/destinations, /api/crew etc.
 
-Another thing I'm practising is [React Framer Motion](https://framermotionexamples.com/). Using this to animate tab transitions, menu nav transitions and loading of comps via Animate Presence. 
+Another thing I'm practising is [React Framer Motion](https://framermotionexamples.com/). Using this to animate tab transitions, menu nav transitions and loading of comps via Animate Presence.
 
 ### Screenshot
 
@@ -60,25 +60,61 @@ Note about the design VS dev version for this project: this is the 1st of FE Men
 - [Vite](https://vite.dev/) - FE Build Tool
 - [Framer Motion](https://framermotionexamples.com/) - for animations
 
-
 ### Deviations from Design/Expansions/Additions
 
 1. Added a very soft drop shadow for Explore btn since I felt on very dark bg plain white doesnt have much depth. It's barely perceptable yet slightly 3d.
-2. Added a tiny scale up on the active dot in Crew tabs via framer motion, since it fits the effect of 'scale & glow' I was going for. 
+2. Added a tiny scale up on the active dot in Crew tabs via framer motion, since it fits the effect of 'scale & glow' I was going for.
+
 ```js
-          <motion.div
-            animate={{
-              scale: activeTab === tab.index ? 1.2 : 1,
-              backgroundColor:
-                activeTab === tab.index
-                  ? "#ffffff"
-                  : "rgba(255, 255, 255, 0.17)",
-            }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="w-3.75 h-3.75 rounded-full cursor-pointer"
-            onClick={() => onClickHandle(tab.index)}
-          />
+<motion.div
+  animate={{
+    scale: activeTab === tab.index ? 1.2 : 1,
+    backgroundColor:
+      activeTab === tab.index ? "#ffffff" : "rgba(255, 255, 255, 0.17)",
+  }}
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.9 }}
+  className="w-3.75 h-3.75 rounded-full cursor-pointer"
+  onClick={() => onClickHandle(tab.index)}
+/>
+```
+
+3. Since Render API goes to sleep within 15 min of inactivity, I've implemented <suspense> & <await> & pass Promise to UI loader instead of await, as well as show skeleton as fallback. Without it, I can't even click on /destination or other routers if server is asleep. E.g.:
+
+```js
+      //change  to loader func:
+      const techPromise = fetch(import.meta.env.VITE_ROOT_API_TECH).then((res) => {
+          if (!res.ok) throw new Error("Failed to fetch technology data");
+          return res.json();
+        });
+        return {
+          techTerms: techPromise,
+        };
+      }
+      //skeleton for loading, comp for resolved promise
+      <Suspense fallback={<TechSkeleton />}>
+        <Await
+          resolve={techTerms}
+          errorElement={<p>Error loading tech terminology data!</p>}
+        >
+          {(resolvedTechTerms: Term[]) => {
+            const tabCircles = resolvedTechTerms.map(
+              (term: Term, index: number) => ({
+                index: index,
+                name: term.name,
+              })
+            );
+            return (
+              <div className="md:pb-32 lg:py-12">
+                <div className="lg:pl-8 xl:pl-16 lg:flex lg:items-center">
+                 //..component using resolvedTechTerms
+                </div>
+              </div>
+            );
+          }}
+        </Await>
+      </Suspense>
+
 ```
 
 ### What I learned
@@ -150,6 +186,7 @@ And providing dynamic img src:
   />
 </picture>
 ```
+
 3. Had some time to find out how to replace the default favicon, but could not see location. AI suggested to overwrite is in Links as below:
 
 ```js
@@ -167,7 +204,16 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 ```
+
 It's also the spot where I replaced default font with required ones.
+
+4. Deploying API to Render & making it work with Netlify-deployed Front-End. 
+
+I discovered I needed a netlify-specific package to make react router v7 work: [@netlify/vite-plugin-react-router](https://docs.netlify.com/build/frameworks/framework-setup-guides/react-router/). It was as simple as installing it via npm & adding it to vite TS config file.
+
+5. Adding Suspense & Await for rendering skeleton & passing Promise to loader UI to display skeleton serves as better UI for when API server is asleep & still waking up. Skeletons were made by Gemini to increase speed & manual repetition. They use animate-pulse to create 'loading' feel.
+
+6. I should be moving to WEBP format wherever possible. According to [this blog](https://crystallize.com/blog/avif-vs-webp), as of 2026, WebP is considered a "widely available" standard, supported by all major browsers (Chrome, Safari, Firefox, Edge).
 
 ### Continued development & current roadblocks/challenges
 
@@ -176,19 +222,14 @@ It's also the spot where I replaced default font with required ones.
 I've tried absolute positioning relative to the links blurry righ-hand side, but then realized its actually in line with content on Homepage & with Breadcrumb on Destination (main layout) pages. So the refined solution is putting it inside the Nav row & offsetting slightly, replicating what design does towards the Right-hand side. However, this still does not match the OG design and will need more playing with to get to what design wants to achieve. Current solution does not look terrible but will be interesting to find out how to achieve the design requirement (or if possible at all?)
 
 2. Framer Motion nasties
-Initially wanted to implement the router-based animation,wrapping <main> in <motion.main> and using path.location from useLocation hook as key. Somehow it messes up my bg image & height screen, adding a scroll as well (since it requires/suggests h-screen class - but i dont need  it since i calc my height maunally to avoid that kind of scroll). Soo after a bit of kefuffle I've settled on motion divs for each comp as a there are not that many and Destination tabs content already slides gracefuly into view.
+   Initially wanted to implement the router-based animation,wrapping <main> in <motion.main> and using path.location from useLocation hook as key. Somehow it messes up my bg image & height screen, adding a scroll as well (since it requires/suggests h-screen class - but i dont need it since i calc my height maunally to avoid that kind of scroll). Soo after a bit of kefuffle I've settled on motion divs for each comp as a there are not that many and Destination tabs content already slides gracefuly into view.
 
 3. Had an idea for future animation on load/stagger for CTA: since it has the 'aura/ring' effect on hover, it might be cool to do a circular motion (like a loader but only 1 ring cycle) on animate presence. IDK if thats achievable but that is how I envisage this appearing on the screen.
 
+4. To start with, I was serving 'jpg' version of images. However, when I deployed, it looked like they were slow to be served. I've replaced png with webp formats wherever it was supplied in OG data since it's more performant & lesser size. For future I would implement *pre-loading* or some similar process.
 
-### Useful resources
+5. Refactor Nav link in separate comp to avoid repetition.
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+6. Refactor loader for 3 routes into 1 func.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
-## Author
-
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+7. Implement a "fallback" strategy in HTML so your site serves WebP to modern browsers and JPG/png to older ones.

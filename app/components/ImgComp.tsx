@@ -16,9 +16,9 @@ const ImgComp = <T extends BaseElement>({ element, type }: { element: T, type?: 
   }
   return (
     <div className={type!='dest' ? 'py-6 md:py-10 lg:py-0 px-7' : ''}> 
-    <div className={`${type!='dest' ? 'relative max-h-[340px]  min-h-[340px] md:max-h-[560px] md:min-h-[560px] lg:max-h-[600px] lg:min-h-[600px] overflow-hidden pt-[125%] lg:pt-[122%]' : 'py-6 md:py-10 lg:py-0 px-7'}  flex justify-center items-center xl:items-start xl:justify-start `}
+    <div className={`${type!='dest' ? 'relative max-h-85  min-h-85 md:max-h-140 md:min-h-140 lg:max-h-150 lg:min-h-150 overflow-hidden pt-[125%] lg:pt-[122%]' : 'py-6 md:py-10 lg:py-0 px-7'}  flex justify-center items-center xl:items-start xl:justify-start `}
     >
-      <img src={element.images.png} className={`${type==='dest' ? destinationClasses : crewClasses}`}/>
+      <img src={element.images.webp} className={`${type==='dest' ? destinationClasses : crewClasses}`}/>
     {type!='dest' && (<div className="absolute backdrop-blur-[1px] bg-linear-to-b from-transparent to-blue-900 w-full h-1/5  bottom-0 z-100"></div>)}  
     </div>
     </div>
