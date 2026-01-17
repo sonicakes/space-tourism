@@ -6,6 +6,7 @@ import type { Term } from "~/types";
 import TechComp from "~/components/technology/TechComp";
 import TechSkeleton from "~/components/skeletons/TechSkeleton";
 import { Await } from "react-router-dom";
+import ErrorState from "~/components/shared/ui/ErrorState";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -36,7 +37,7 @@ const TechnologyPage = ({ loaderData }: Route.ComponentProps) => {
       <Suspense fallback={<TechSkeleton />}>
         <Await
           resolve={techTerms}
-          errorElement={<p>Error loading tech terminology data!</p>}
+          errorElement={<ErrorState />}
         >
           {(resolvedTechTerms: Term[]) => {
             const tabCircles = resolvedTechTerms.map(

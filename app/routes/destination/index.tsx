@@ -6,6 +6,7 @@ import DestinationTabs from "~/components/destinations/DestinationTabs";
 import { Await } from "react-router";
 import { Suspense, useState } from "react";
 import DestinationSkeleton from "~/components/skeletons/DestinationSkeleton";
+import ErrorState from "~/components/shared/ui/ErrorState";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -39,7 +40,7 @@ const DestinationPage = ({ loaderData }: Route.ComponentProps) => {
       >
         <Await
           resolve={destinations}
-          errorElement={<p>Error loading destinations!</p>}
+          errorElement={<ErrorState />}
         >
           {(resolvedDestinations: Destination[]) => {
             const destNames = resolvedDestinations.map((dest) => dest.name);
@@ -62,6 +63,7 @@ const DestinationPage = ({ loaderData }: Route.ComponentProps) => {
             );
           }}
         </Await>
+        
       </Suspense>
     </>
   );

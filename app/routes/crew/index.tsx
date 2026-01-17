@@ -6,6 +6,7 @@ import CrewPagination from "~/components/crew/CrewPagination";
 import CrewComp from "~/components/crew/CrewComp";
 import CrewSkeleton from "~/components/skeletons/CrewSkeleton";
 import { Await } from "react-router-dom";
+import ErrorState from "~/components/shared/ui/ErrorState";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -35,7 +36,7 @@ const CrewPage = ({ loaderData }: Route.ComponentProps) => {
       <Suspense fallback={<CrewSkeleton />}>
         <Await
           resolve={crewMembers}
-          errorElement={<p>Error loading crew members data!</p>}
+          errorElement={<ErrorState />}
         >
           {(resolvedCrewMembers: CrewMember[]) => {
             const tabCircles = resolvedCrewMembers.map(

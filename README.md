@@ -12,8 +12,7 @@ This is a solution to the [Space tourism website challenge on Frontend Mentor](h
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
+
 
 ## Overview
 
@@ -31,18 +30,32 @@ Another thing I'm practising is [React Framer Motion](https://framermotionexampl
 
 ### Screenshot
 
-![](./screenshot.jpg)
+To display dimensions, for desktop I've used [this site](https://viewportsizer.com/) & dev tools for tablet & mobile.
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+![Desktop(1920x1080) - Home](./public/home-desktop.png)
+![Desktop(1920x1080) - Destination](./public/destination-desktop.png)
+![Desktop(1920x1080) - Crew](./public/crew-desktop.png)
+![Desktop(1920x1080) - Technology](./public/tech-desktop.png)
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
+![Tablet(iPad Mini, 768x1024) - Home](./public/destination-tablet.png)
+![Tablet - Destination](./public/destination-tablet.png)
+![Tablet - Crew](./public/destination-tablet.png)
+![Tablet - Technology](./public/destination-tablet.png)
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+![Mobile(iPhone 14 Pro Max, 430x932) - Home](./public/home-mobile.png)
+![Mobile(iPhone 14 Pro Max, 430x932) - Destination](./public/destination-mobile.png)
+![Mobile(iPhone 14 Pro Max, 430x932) - Crew](./public/crew-mobile.png)
+![Mobile(iPhone 14 Pro Max, 430x932) - Technology](./public/tech-mobile.png)
+![Mobile(iPhone 14 Pro Max, 430x932) - Mobile Menu Expanded](./public/nav-mobile.png)
 
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Space Tourism Netlify Site](https://space-tourism-cakes.netlify.app/)
+- Space API:
+1. [Render Space API - Destinations](https://space-api-n2m0.onrender.com/api/destinations)
+2. [Render Space API - Crew](https://space-api-n2m0.onrender.com/api/crew)
+3. [Render Space API - Technology](https://space-api-n2m0.onrender.com/api/technology)
 
 ## My process
 
@@ -50,15 +63,14 @@ Note about the design VS dev version for this project: this is the 1st of FE Men
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
 - [React](https://reactjs.org/) - JS library
 - [React Router v7 in Framework Mode](https://reactrouter.com/) - React Router docs
 - [Tailwind v4](https://tailwindcss.com/) - For styles
 - [Vite](https://vite.dev/) - FE Build Tool
 - [Framer Motion](https://framermotionexamples.com/) - for animations
+- [Netlify](https://www.netlify.com/) - cloud service for deploying FE
+- [Render](https://render.com/) - cloud application platform; used for deploying API
+- [@netlify/vite-plugin-react-router](https://docs.netlify.com/build/frameworks/framework-setup-guides/react-router/) - npm package to allow Netlify router-based loader data FE to work with Render API
 
 ### Deviations from Design/Expansions/Additions
 
@@ -215,7 +227,9 @@ I discovered I needed a netlify-specific package to make react router v7 work: [
 
 6. I should be moving to WEBP format wherever possible. According to [this blog](https://crystallize.com/blog/avif-vs-webp), as of 2026, WebP is considered a "widely available" standard, supported by all major browsers (Chrome, Safari, Firefox, Edge).
 
-### Continued development & current roadblocks/challenges
+### Continued development & current roadblocks/challenges & TODOs
+
+00. **IMPORTANT: The free tier I'm using to deploy my API to Render goes to sleep after ~15min of inactivity; I have 'loading' skeletons to serve UI when it's waking up, but I noticed it's still saying 'error loading...' after showing skeletons if I'm just triggering the sleeping server** - need to investigate how to get around this. For the time being, accepting server is sometimes sleepy so 'error' means *waiting ~50sec for it to warm up & refresh the page*.
 
 1. The 'divider' line in desktop design (Figma file) on the Nav menu is vertically aligned with the content that is within container restraints (So, you want to go to space). The Menu itself is not within container (it spans wider than container content on desktop sizes).
 
@@ -233,3 +247,13 @@ I've tried absolute positioning relative to the links blurry righ-hand side, but
 6. Refactor loader for 3 routes into 1 func.
 
 7. Implement a "fallback" strategy in HTML so your site serves WebP to modern browsers and JPG/png to older ones.
+
+8. Implement framer motion animation for mobile menu nav sliding/appearing. 
+
+9. Adjust positioning of circle paginaton tabs on Crew content. I've done it for Technology & Destination, just need to refine it for Crew as well.
+
+10. Adjust size of images on Crew Tablet - they are too big currently in live site compared to OG design.
+
+11. Make env vars be conditional on what env we're in e.g. create .env.local file for local, use .env for production (currently env var is a hardcoded Render API address url).
+
+
