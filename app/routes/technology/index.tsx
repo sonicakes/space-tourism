@@ -1,9 +1,11 @@
 import type Route from "./+types/index";
 import Breadcrumb from "~/components/shared/ui/Breadcrumb";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import TechPagination from "~/components/technology/TechPagination";
 import type { Term } from "~/types";
 import TechComp from "~/components/technology/TechComp";
+import TechSkeleton from "~/components/skeletons/TechSkeleton";
+import { Await } from "react-router-dom";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -12,43 +14,59 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export async function loader({
-  request,
-}: Route.LoaderArgs): Promise<{ terms: Term[] }> {
-  const res = await fetch(import.meta.env.VITE_ROOT_API_TECH);
-  const data = await res.json();
-  console.log(data);
-  return { terms: data };
+export async function loader({ request }: Route.LoaderArgs) {
+  const techPromise = fetch(import.meta.env.VITE_ROOT_API_TECH).then((res) => {
+    if (!res.ok) throw new Error("Failed to fetch technology data");
+    return res.json();
+  });
+  return {
+    techTerms: techPromise,
+  };
 }
 const TechnologyPage = ({ loaderData }: Route.ComponentProps) => {
-  const { terms } = loaderData as { terms: Term[] };
+  const { techTerms } = loaderData;
   const [activeTab, setActiveTab] = useState(0);
-  const tabCircles = terms.map((term, index) => ({
-    index: index,
-    name: term.name,
-  }));
+
   return (
     <>
       <div className="max-w-6xl mx-auto pt-6 md:pt-10 lg:pt-12 px-6 md:px-10 lg:px-16 xl:px-0">
         <Breadcrumb ind={3} label="Space launch 101" />
       </div>
-      <div className="md:pb-32 lg:py-12">
-        <div className="lg:pl-8 xl:pl-16 lg:flex lg:items-center">
-          <TechPagination
-            tabCircles={tabCircles}
-            activeTab={activeTab}
-            onClickHandle={setActiveTab}
-          />
-          {terms.map((term, index) => (
-            <TechComp
-              key={term.name}
-              term={term}
-              activeTab={activeTab}
-              index={index}
-            />
-          ))}
-        </div>
-      </div>
+
+      <Suspense fallback={<TechSkeleton />}>
+        <Await
+          resolve={techTerms}
+          errorElement={<p>Error loading tech terminology data!</p>}
+        >
+          {(resolvedTechTerms: Term[]) => {
+            const tabCircles = resolvedTechTerms.map(
+              (term: Term, index: number) => ({
+                index: index,
+                name: term.name,
+              })
+            );
+            return (
+              <div className="md:pb-32 lg:py-12">
+                <div className="lg:pl-8 xl:pl-16 lg:flex lg:items-center">
+                  <TechPagination
+                    tabCircles={tabCircles}
+                    activeTab={activeTab}
+                    onClickHandle={setActiveTab}
+                  />
+                  {resolvedTechTerms.map((term: Term, index: number) => (
+                    <TechComp
+                      key={term.name}
+                      term={term}
+                      activeTab={activeTab}
+                      index={index}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          }}
+        </Await>
+      </Suspense>
     </>
   );
 };
