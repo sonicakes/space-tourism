@@ -32,25 +32,25 @@ Another thing I'm practising is [React Framer Motion](https://framermotionexampl
 
 To display dimensions, for desktop I've used [this site](https://viewportsizer.com/) & dev tools for tablet & mobile.
 
-![Desktop(1920x1080) - Home](./public/home-desktop.png)
-![Desktop(1920x1080) - Destination](./public/destination-desktop.png)
-![Desktop(1920x1080) - Crew](./public/crew-desktop.png)
-![Desktop(1920x1080) - Technology](./public/tech-desktop.png)
+![Desktop(1920x1080) - Home](./public/screenshots/home-desktop.png)
+![Desktop(1920x1080) - Destination](./public/screenshots/destination-desktop.png)
+![Desktop(1920x1080) - Crew](./public/screenshots/crew-desktop.png)
+![Desktop(1920x1080) - Technology](./public/screenshots/tech-desktop.png)
 
-![Tablet(iPad Mini, 768x1024) - Home](./public/destination-tablet.png)
-![Tablet - Destination](./public/destination-tablet.png)
-![Tablet - Crew](./public/destination-tablet.png)
-![Tablet - Technology](./public/destination-tablet.png)
+![Tablet(iPad Mini, 768x1024) - Home](./public/screenshots/destination-tablet.png)
+![Tablet - Destination](./public/screenshots/destination-tablet.png)
+![Tablet - Crew](./public/screenshots/destination-tablet.png)
+![Tablet - Technology](./public/screenshots/destination-tablet.png)
 
-![Mobile(iPhone 14 Pro Max, 430x932) - Home](./public/home-mobile.png)
-![Mobile(iPhone 14 Pro Max, 430x932) - Destination](./public/destination-mobile.png)
-![Mobile(iPhone 14 Pro Max, 430x932) - Crew](./public/crew-mobile.png)
-![Mobile(iPhone 14 Pro Max, 430x932) - Technology](./public/tech-mobile.png)
-![Mobile(iPhone 14 Pro Max, 430x932) - Mobile Menu Expanded](./public/nav-mobile.png)
+![Mobile(iPhone 14 Pro Max, 430x932) - Home](./public/screenshots/home-mobile.png)
+![Mobile(iPhone 14 Pro Max, 430x932) - Destination](./public/screenshots/destination-mobile.png)
+![Mobile(iPhone 14 Pro Max, 430x932) - Crew](./public/screenshots/crew-mobile.png)
+![Mobile(iPhone 14 Pro Max, 430x932) - Technology](./public/screenshots/tech-mobile.png)
+![Mobile(iPhone 14 Pro Max, 430x932) - Mobile Menu Expanded](./public/screenshots/nav-mobile.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Front End Mentor Solution](https://www.frontendmentor.io/solutions/react-router-7-space-tourism-website-mEOrjiFKn8)
 - Live Site URL: [Space Tourism Netlify Site](https://space-tourism-cakes.netlify.app/)
 - Space API:
 1. [Render Space API - Destinations](https://space-api-n2m0.onrender.com/api/destinations)
