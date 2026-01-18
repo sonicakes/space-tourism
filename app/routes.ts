@@ -14,5 +14,6 @@ export default [
    layout("./routes/layouts/technology.tsx", [
     route("technology", "./routes/technology/index.tsx"),
   ]),
-  
+  route("*", "./routes/not-found.tsx"),
+
 ] satisfies RouteConfig;

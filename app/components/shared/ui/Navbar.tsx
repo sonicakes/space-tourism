@@ -37,11 +37,10 @@ const Navbar = () => {
           {({ isActive }) => (
             <>
               <span className="font-bold mr-2">00</span> Home
-              {/* The Magic Sliding Underline */}
               {isActive && (
                 <motion.div
                   layoutId="nav-underline"
-                  className="absolute bottom-0 left-0 right-0 h-[3px] bg-white"
+                  className="absolute bottom-0 left-0 right-0 h-0.75 bg-white"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -57,11 +56,10 @@ const Navbar = () => {
           {({ isActive }) => (
             <>
               <span className="font-bold mr-2">01</span> Destination
-              {/* The Magic Sliding Underline */}
               {isActive && (
                 <motion.div
                   layoutId="nav-underline"
-                  className="absolute bottom-0 left-0 right-0 h-[3px] bg-white"
+                  className="absolute bottom-0 left-0 right-0 h-0.75 bg-white"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -77,11 +75,10 @@ const Navbar = () => {
           {({ isActive }) => (
             <>
               <span className="font-bold mr-2">02</span> Crew
-              {/* The Magic Sliding Underline */}
               {isActive && (
                 <motion.div
                   layoutId="nav-underline"
-                  className="absolute bottom-0 left-0 right-0 h-[3px] bg-white"
+                  className="absolute bottom-0 left-0 right-0 h-0.75 bg-white"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -97,11 +94,10 @@ const Navbar = () => {
           {({ isActive }) => (
             <>
               <span className="font-bold mr-2">03</span> Technology
-              {/* The Magic Sliding Underline */}
               {isActive && (
                 <motion.div
                   layoutId="nav-underline"
-                  className="absolute bottom-0 left-0 right-0 h-[3px] bg-white"
+                  className="absolute bottom-0 left-0 right-0 h-0.75 bg-white"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
